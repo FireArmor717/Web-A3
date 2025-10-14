@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const ADMIN_API = 'https://24517076.it.scu.edu.au/api/api/admin/events';
+const ADMIN_API = 'https://localhost:3000/api/admin/events';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
