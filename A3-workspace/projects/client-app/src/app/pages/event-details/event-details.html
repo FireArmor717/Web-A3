@@ -1,1 +1,38 @@
-<p>event-details works!</p>
+<section *ngIf="!loading">
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <article *ngIf="event" class="detail-card">
+    <header>
+      <h2>{{ event.event_name }}</h2>
+      <p class="muted">{{ event.event_location }} • {{ event.event_date }}</p>
+    </header>
+
+    <div class="meta">
+      <p><strong>Category:</strong> {{ event.category_name }}</p>
+      <p><strong>Tickets:</strong> ${{ event.ticket_price }}</p>
+      <p><strong>Goal:</strong> ${{ event.goal_amount }} &nbsp; <strong>Raised:</strong> {{ event.progress_amount }}</p>
+    </div>
+
+    <p class="desc">{{ event.event_description }}</p>
+
+    <div class="actions">
+      <button (click)="goRegister()">Register for this event</button>
+      <a [routerLink]="['/search']">Back to search</a>
+      <a routerLink="/">Back to home</a>
+    </div>
+
+    <section class="registrations" *ngIf="registrations?.length">
+      <h3>Registrations (latest first)</h3>
+      <ul>
+        <li *ngFor="let r of registrations">
+          <strong>{{ r.registrant_name }}</strong> — {{ r.num_tickets }} ticket(s) — {{ r.registration_date | date:'mediumDate' }}
+          <div class="muted">{{ r.registrant_email }}</div>
+        </li>
+      </ul>
+    </section>
+
+    <div *ngIf="registrations?.length === 0" class="muted">No registrations yet.</div>
+  </article>
+</section>
+
+<div *ngIf="loading">Loading event details…</div>
