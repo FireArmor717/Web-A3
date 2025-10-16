@@ -1,0 +1,117 @@
+<section class="dashboard-container" *ngIf="!loading">
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+    <header class="card-head">
+      <h2>All Events</h2>
+      <div class="small-muted">Manage charity events (create, edit, delete)</div>
+    </header>
+
+  <div *ngIf="events.length; else noEvents" class="table-card">
+    <table class="events-table">
+      <thead>
+        <tr>
+          <th>ID</th><th>Name</th><th>Date</th><th>Location</th><th>Category</th><th>Goal</th><th>Raised</th><th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of events" class="event-row">
+          <td>{{ e.event_id }}</td>
+          <td>{{ e.event_name }}</td>
+          <td>{{ e.event_date }}</td>
+          <td>{{ e.event_location }}</td>
+          <td>{{ e.category_name || '-' }}</td>
+          <td>${{ e.goal_amount || 0 }}</td>
+          <td>${{ e.progress_amount || 0 }}</td>
+          <td class="actions">
+            <a [routerLink]="['/edit', e.event_id]" class="btn small">✏️ Edit</a>
+            <button class="btn small danger" (click)="deleteEvent(e.event_id)">🗑 Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noEvents>
+    <div class="muted">No events yet. Click “Add Event” to create one.</div>
+  </ng-template>
+</section>
+
+<div *ngIf="loading" class="muted">Loading events...</div>
+
+<style>
+.dashboard-container {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.dashboard-header h2 {
+  color: #004b7a;
+}
+.table-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+.events-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.events-table th {
+  background: #0078d4;
+  color: white;
+  padding: 10px;
+  text-align: left;
+}
+.events-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+.event-row:hover {
+  background-color: #f1f8ff;
+  transition: background 0.2s;
+}
+.actions {
+  display: flex;
+  gap: 6px;
+}
+.btn.small {
+  padding: 4px 10px;
+  border-radius: 5px;
+  background: #0078d4;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+.btn.small:hover {
+  transform: scale(1.05);
+}
+.btn.small.danger {
+  background: #e63946;
+}
+.btn.primary {
+  background: linear-gradient(90deg, #0078d4, #00b4d8);
+  color: white;
+  border-radius: 8px;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn.primary:hover {
+  box-shadow: 0 4px 12px rgba(0,120,212,0.3);
+  transform: translateY(-2px);
+}
+.muted {
+  text-align: center;
+  color: #777;
+  margin-top: 1.5rem;
+}
+</style>

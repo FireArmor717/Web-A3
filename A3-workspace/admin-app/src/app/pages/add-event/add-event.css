@@ -1,0 +1,7 @@
+.form label{display:flex;flex-direction:column;margin-bottom:10px;font-weight:600}
+.form input,.form textarea{padding:8px;border-radius:6px;border:1px solid #d9dde3}
+.form textarea{min-height:90px}
+.form-actions{display:flex;gap:12px;align-items:center;margin-top:10px}
+.form-actions button{background:var(--brand);color:#fff;border:none;padding:10px 14px;border-radius:8px;cursor:pointer}
+.form-actions a{color:var(--muted);text-decoration:none}
+.message{color:var(--danger);margin-top:10px}

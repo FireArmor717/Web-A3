@@ -1,0 +1,49 @@
+<section *ngIf="!loading; else loadingTpl">
+  <div *ngIf="message" class="error">{{ message }}</div>
+
+  <div class="card" *ngIf="form">
+    <h2>Edit Event</h2>
+    <form (ngSubmit)="submit()" class="form">
+      <label>
+        Name
+        <input name="event_name" [(ngModel)]="form.event_name" />
+      </label>
+
+      <label>
+        Date
+        <input type="date" name="event_date" [(ngModel)]="form.event_date" />
+      </label>
+
+      <label>
+        Location
+        <input name="event_location" [(ngModel)]="form.event_location" />
+      </label>
+
+      <label>
+        Goal Amount
+        <input type="number" name="goal_amount" [(ngModel)]="form.goal_amount" />
+      </label>
+
+      <label>
+        Progress Amount
+        <input type="number" name="progress_amount" [(ngModel)]="form.progress_amount" />
+      </label>
+
+      <label>
+        Description
+        <textarea name="event_description" [(ngModel)]="form.event_description"></textarea>
+      </label>
+
+      <div class="form-actions">
+        <button type="submit" [disabled]="submitting">Save</button>
+        <a routerLink="/">Cancel</a>
+      </div>
+
+      <div class="message" *ngIf="message">{{ message }}</div>
+    </form>
+  </div>
+</section>
+
+<ng-template #loadingTpl>
+  <div class="muted">Loading event data…</div>
+</ng-template>
