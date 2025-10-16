@@ -1,1 +1,22 @@
-<p>home works!</p>
+<section>
+  <h2>Upcoming Charity Events</h2>
+
+  <div *ngIf="loading">Loading events…</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div class="events-grid" *ngIf="!loading && events?.length">
+    <article class="card" *ngFor="let e of events" (click)="viewEvent(e.event_id)" tabindex="0">
+      <div class="card-body">
+        <h3 class="card-title">{{ e.event_name }}</h3>
+        <p class="muted">{{ e.event_location }} • {{ e.event_date }}</p>
+        <p><strong>Category:</strong> {{ e.category_name }}</p>
+        <p><strong>Tickets:</strong> ${{ e.ticket_price }} • <strong>Goal:</strong> ${{ e.goal_amount }}</p>
+      </div>
+      <div class="card-foot">
+        <a [routerLink]="['/event', e.event_id]" (click)="$event.stopPropagation()">View details →</a>
+      </div>
+    </article>
+  </div>
+
+  <div *ngIf="!loading && (!events || events.length === 0)">No upcoming events.</div>
+</section>
