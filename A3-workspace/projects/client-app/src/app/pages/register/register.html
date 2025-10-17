@@ -1,1 +1,27 @@
-<p>register works!</p>
+<section class="register-section">
+  <h2>Register for event</h2>
+
+  <form (ngSubmit)="submit()">
+    <label>
+      Full name
+      <input [(ngModel)]="name" name="name" required />
+    </label>
+
+    <label>
+      Email
+      <input [(ngModel)]="email" name="email" type="email" required />
+    </label>
+
+    <label>
+      Number of tickets
+      <input [(ngModel)]="tickets" name="tickets" type="number" min="1" required />
+    </label>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="submitting">Submit</button>
+      <button type="button" (click)="cancel()" class="secondary">Cancel</button>
+    </div>
+
+    <div *ngIf="message" [class.success]="success" [class.error]="!success" class="msg">{{ message }}</div>
+  </form>
+</section>
