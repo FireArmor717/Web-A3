@@ -1,1 +1,24 @@
-<p>search works!</p>
+<section>
+  <h2>Search Events</h2>
+
+  <form class="search-form" (submit)="$event.preventDefault(); doSearch()">
+    <input [(ngModel)]="date" name="date" type="date" />
+    <input [(ngModel)]="location" name="location" placeholder="Location"/>
+    <input [(ngModel)]="category" name="category" placeholder="Category"/>
+    <div class="buttons">
+      <button type="button" (click)="doSearch()">Search</button>
+      <button type="button" (click)="clearFilters()">Clear</button>
+    </div>
+  </form>
+
+  <div *ngIf="loading">Searching…</div>
+  <div *ngIf="message" class="muted">{{ message }}</div>
+
+  <div class="results" *ngIf="results?.length">
+    <article class="result-card" *ngFor="let e of results" (click)="viewEvent(e.event_id)">
+      <h3>{{ e.event_name }}</h3>
+      <p class="muted">{{ e.event_location }} • {{ e.event_date }}</p>
+      <p><strong>Category:</strong> {{ e.category_name }}</p>
+    </article>
+  </div>
+</section>
