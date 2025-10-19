@@ -1,0 +1,7 @@
+.search-form{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:12px; }
+.search-form input{ padding:8px; min-width:160px; border-radius:6px; border:1px solid #dfeff0; }
+.buttons{ display:flex; gap:8px; }
+button{ padding:8px 12px; cursor:pointer; border-radius:6px; border:none; background:#0369a1; color:white; }
+button[type="button"]:last-child{ background:#6b7280; }
+.result-card{ background:white; padding:12px; border-radius:8px; border:1px solid #eef6f8; margin-bottom:10px; cursor:pointer; }
+.muted{ color:#6b7280; }

@@ -1,0 +1,24 @@
+/* global app styles */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background: linear-gradient(90deg,#0d9488,#0369a1);
+  color:#fff;
+  padding:14px 20px;
+}
+.nav-left{ cursor:pointer; display:flex; flex-direction:column; }
+.brand{ font-weight:700; font-size:1.1rem; }
+.tagline{ font-size:0.85rem; opacity:0.95; margin-top:4px; }
+.nav-links{ list-style:none; display:flex; gap:16px; margin:0; padding:0; align-items:center; }
+.nav-links a{ color:white; text-decoration:none; font-weight:600; padding:6px 10px; border-radius:6px; }
+.nav-links a.active, .nav-links a:hover{ background: rgba(255,255,255,0.12); }
+
+.container{ padding:20px; min-height:72vh; max-width:1100px; margin:0 auto; }
+
+.footer{
+  background:#053f41;
+  color:#fff;
+  text-align:center;
+  padding:10px 0;
+}

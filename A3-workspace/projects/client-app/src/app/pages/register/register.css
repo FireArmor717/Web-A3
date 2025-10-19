@@ -1,0 +1,9 @@
+.register-section{ max-width:520px; background:#fff; padding:18px; border-radius:10px; border:1px solid #e7f0f1; }
+label{ display:block; margin-bottom:10px; font-weight:600; }
+input{ width:100%; padding:10px; margin-top:6px; border-radius:6px; border:1px solid #dbeafe; }
+.form-actions{ display:flex; gap:10px; margin-top:12px; }
+button{ padding:10px 14px; border-radius:6px; border:none; cursor:pointer; background:#0369a1; color:white; }
+button.secondary{ background:#6b7280; }
+.msg{ margin-top:10px; font-weight:600; }
+.success{ color: #059669; }
+.error{ color: #b91c1c; }
